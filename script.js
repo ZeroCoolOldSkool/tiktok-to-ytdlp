@@ -90,7 +90,8 @@ function ytDlpScript() {
     // Create the txt file with all of the TikTok links.
     var ytDlpScript = "";
     for (var x = 0; x < containerSets[0].length; x++) {
-        if (parseInt(containerSets[1][x]) < scriptOptions.min_views) continue;
+        var tiktokNumberOfViews = parseInt(containerSets[1][x].replace('.', ''));
+        if (tiktokNumberOfViews < scriptOptions.min_views) continue;
         ytDlpScript += `${containerSets[0][x]}\n`;
     }
     if (scriptOptions.node.isNode && !scriptOptions.node.isResolveTime) return ytDlpScript.split("\n"); else downloadScript(ytDlpScript); // If the user has requested from Node to get the array, get it
